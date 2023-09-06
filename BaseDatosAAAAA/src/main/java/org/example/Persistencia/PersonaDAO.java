@@ -23,13 +23,14 @@ public class PersonaDAO implements interfazDAO {
 
     @Override
     public boolean update(Object obj) throws SQLException {
-        String sqlUpdate="UPDATE Personas SET Nombre=?,Apellido=? WHERE id=?;";
-        int rowCount=0;
-        PreparedStatement pstm=ConexionSingleton.getInstance("BasePersona.db").getConection().prepareStatement(sqlUpdate);
-        pstm.setString(1,((Persona)obj).getNombre());
-        pstm.setString(2,((Persona)obj).getApellido());
+        String sqlUpdate = "UPDATE Personas SET Nombre=?, Apellido=? WHERE id=?;"; // Agregamos el WHERE id=?
+        int rowCount = 0;
+        PreparedStatement pstm = ConexionSingleton.getInstance("BasePersona.db").getConection().prepareStatement(sqlUpdate);
+        pstm.setString(1, ((Persona) obj).getNombre());
+        pstm.setString(2, ((Persona) obj).getApellido());
+        pstm.setInt(3, ((Persona) obj).getId()); // Agregamos el ID
         rowCount = pstm.executeUpdate();
-        return rowCount>0;
+        return rowCount > 0;
     }
 
     @Override

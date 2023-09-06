@@ -130,9 +130,13 @@ public class ModeloTablaPersona implements TableModel {
         return resultado;
     }
     public boolean ActualizarPersona(Persona persona) {
-        boolean resultado = true;
+        boolean resultado = false;
         try {
             if (pdao.update(persona)) {
+                // Elimina la persona antigua de la lista
+                datos.removeIf(p -> p.getId() == persona.getId());
+
+                // Agrega la persona actualizada
                 datos.add(persona);
                 resultado = true;
             } else {
@@ -140,7 +144,6 @@ public class ModeloTablaPersona implements TableModel {
             }
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
-
         }
         return resultado;
     }

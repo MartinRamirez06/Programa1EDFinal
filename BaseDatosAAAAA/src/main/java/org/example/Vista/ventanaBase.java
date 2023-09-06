@@ -39,7 +39,7 @@ public class ventanaBase extends JFrame {
 
     public ventanaBase(String title) throws HeadlessException {
         super(title);
-        this.setSize(1000,800);
+        this.setSize(1100,800);
         layout=new GridLayout(2,2);
         this.getContentPane().setLayout(layout);
 

@@ -56,6 +56,10 @@ public class BotonesBase extends MouseAdapter {
 
         if (e.getSource() == this.view.getBtnActualizar()) {
             System.out.println("Evento sobre botòn Actualizar");
+            System.out.println("Nombre a actualizar: " + this.view.getTxtNombre2().getText());
+            System.out.println("Apellido a actualizar: " + this.view.getTxtApellido2().getText());
+
+
             int rowIndex = this.view.getTblPersona().getSelectedRow();
             Persona tmp = modeloTablaPersona.getPersonaIndex(rowIndex);
             Persona per = new Persona();
@@ -63,24 +67,25 @@ public class BotonesBase extends MouseAdapter {
             per.setNombre(this.view.getTxtNombre2().getText());
             per.setApellido(this.view.getTxtApellido2().getText());
             per.setId(tmp.getId());
+            System.out.println("Llamando al método ActualizarPersona con datos: " + per);
+
             if (modeloTablaPersona.ActualizarPersona(per)) {
-                JOptionPane.showMessageDialog(view, "Se modifico correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(view, "Se modificó correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 modeloTablaPersona.cargarDatos();
-                this.view.getTblPersona().setModel(modeloTablaPersona);
-                this.view.getTblPersona().updateUI();
+                this.view.getTblPersona().setModel(modeloTablaPersona); // Actualiza el modelo de la tabla
             } else {
                 JOptionPane.showMessageDialog(view, "No se pudo modificar", "Error al Insertar", JOptionPane.ERROR_MESSAGE);
             }
-            this.view.getTblPersona().updateUI();
-        }
-        if (e.getSource() == view.getTblPersona()) {
-            System.out.println("Evento sobre la tabla");
-            int index = this.view.getTblPersona().getSelectedRow();
-            Persona tem = modeloTablaPersona.getPersonaIndex(index);
+            if (e.getSource() == view.getTblPersona()) {
+                System.out.println("Evento sobre la tabla");
+                int index = this.view.getTblPersona().getSelectedRow();
+                Persona tem = modeloTablaPersona.getPersonaIndex(index);
 
-            this.view.getTxtNombre2().setText(tem.getNombre());
-            this.view.getTxtApellido2().setText(tem.getApellido());
+                this.view.getTxtNombre2().setText(tem.getNombre());
+                this.view.getTxtApellido2().setText(tem.getApellido());
+            }
+            this.view.limpiar();
+            ;
         }
-    this.view.limpiar();;
     }
 }
