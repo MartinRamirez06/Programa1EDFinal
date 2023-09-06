@@ -29,8 +29,13 @@ public class ventanaBase extends JFrame {
     private JPanel panel1;//Formulario para captura los datos
     private JPanel panel2;//Mostrar el formulario
     private JPanel panel3;
+    private JPanel panel4;
     private JLabel ActualizarDATOS;
-    private JLabel EspacioEnBlanco;
+    private JLabel EspacioInstrucciones;
+    private JLabel EspacioInstrucciones2;
+    private JLabel EspacioInstrucciones3;
+    private JLabel EspacioInstrucciones4;
+    private JLabel EspacioInstrucciones5;
 
     public ventanaBase(String title) throws HeadlessException {
         super(title);
@@ -38,8 +43,9 @@ public class ventanaBase extends JFrame {
         layout=new GridLayout(2,2);
         this.getContentPane().setLayout(layout);
 
+
         //panel1
-        panel1=new JPanel(new FlowLayout());
+        panel1=new JPanel(new GridLayout(19,1));
         panel1.setBackground(new Color(239,200,200));
         lblId=new JLabel("Id:");
         lblNombre=new JLabel("Nombre:");
@@ -55,36 +61,25 @@ public class ventanaBase extends JFrame {
         lblId2=new JLabel("Id:");
         lblNombre2=new JLabel("Nombre:");
         lblApellido2=new JLabel("Apellido:");
-        EspacioEnBlanco=new JLabel(" \n" );
         txtId2=new JTextField(3);
         txtId2.setText("0");
         txtNombre2=new JTextField(30);
         txtApellido2=new JTextField(20);
         panel1.add(lblId);
         panel1.add(txtId);
-        panel1.add(EspacioEnBlanco);
-        panel1.add(EspacioEnBlanco);
         panel1.add(lblNombre);
         panel1.add(txtNombre);
-        panel1.add(EspacioEnBlanco);
         panel1.add(lblApellido);
         panel1.add(txtApellido);
-        panel1.add(EspacioEnBlanco);
         panel1.add(btnAgregar);
-        panel1.add(EspacioEnBlanco);
         panel1.add(btnEliminar);
         panel1.add(ActualizarDATOS);
-        panel1.add(EspacioEnBlanco);
-        panel1.add(EspacioEnBlanco);
         panel1.add(lblId2);
         panel1.add(txtId2);
-        panel1.add(EspacioEnBlanco);
         panel1.add(lblNombre2);
         panel1.add(txtNombre2);
-        panel1.add(EspacioEnBlanco);
         panel1.add(lblApellido2);
         panel1.add(txtApellido2);
-        panel1.add(EspacioEnBlanco);
         panel1.add(btnActualizar);
         //panel2
         panel2=new JPanel(new FlowLayout());
@@ -100,17 +95,29 @@ public class ventanaBase extends JFrame {
         btnRegresar=new JButton("Regresar");
         panel3.add(btnCargar);
         panel3.add(btnRegresar);
-
-
+        //panel4
+        panel4=new JPanel(new GridLayout(6,1));
+        panel4.setBackground(new Color(110,130,240));
+        EspacioInstrucciones=new JLabel("Instrucciones");
+        EspacioInstrucciones2=new JLabel("1.-Ingresa los datos que quieras agregar en la tabla");
+        EspacioInstrucciones3=new JLabel("2.-Presiona el boton de cargar para ver la tabla");
+        EspacioInstrucciones4=new JLabel("3.-Selecciona en la tabla cual quieres modificar, y modificalo en la seccion correspondiente");
+        EspacioInstrucciones5=new JLabel("4.-Si desea borrar un dato, seleccionalo y presione el boton eliminar");
+        panel4.add(EspacioInstrucciones);
+        panel4.add(EspacioInstrucciones2);
+        panel4.add(EspacioInstrucciones3);
+        panel4.add(EspacioInstrucciones4);
+        panel4.add(EspacioInstrucciones5);
 
         this.getContentPane().add(panel1,0);
         this.getContentPane().add(panel2,1);
         this.getContentPane().add(panel3,2);
+        this.getContentPane().add(panel4,3);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 
-    public ventanaBase(String title, JLabel lblId, JLabel lblNombre, JLabel lblApellido, JLabel lblHora, JLabel lblfecha, JTextField txtId, JTextField txtNombre, JTextField txtApellido, JLabel lblId2, JLabel lblNombre2, JLabel lblApellido2, JTextField txtId2, JTextField txtNombre2, JTextField txtApellido2, JButton btnAgregar, JButton btnCargar, JButton btnEliminar, JButton btnActualizar, JButton btnRegresar, JScrollPane scrollPane, GridLayout layout, JTable tblPersona, JPanel panel1, JPanel panel2, JPanel panel3, JLabel actualizarDATOS, JLabel espacioEnBlanco) throws HeadlessException {
+    public ventanaBase(String title, JLabel lblId, JLabel lblNombre, JLabel lblApellido, JLabel lblHora, JLabel lblfecha, JTextField txtId, JTextField txtNombre, JTextField txtApellido, JLabel lblId2, JLabel lblNombre2, JLabel lblApellido2, JTextField txtId2, JTextField txtNombre2, JTextField txtApellido2, JButton btnAgregar, JButton btnCargar, JButton btnEliminar, JButton btnActualizar, JButton btnRegresar, JScrollPane scrollPane, GridLayout layout, JTable tblPersona, JPanel panel1, JPanel panel2, JPanel panel3, JPanel panel4, JLabel actualizarDATOS, JLabel espacioInstrucciones, JLabel espacioInstrucciones2, JLabel espacioInstrucciones3, JLabel espacioInstrucciones4, JLabel espacioInstrucciones5) throws HeadlessException {
         super(title);
         this.lblId = lblId;
         this.lblNombre = lblNombre;
@@ -137,8 +144,13 @@ public class ventanaBase extends JFrame {
         this.panel1 = panel1;
         this.panel2 = panel2;
         this.panel3 = panel3;
+        this.panel4 = panel4;
         ActualizarDATOS = actualizarDATOS;
-        EspacioEnBlanco = espacioEnBlanco;
+        EspacioInstrucciones = espacioInstrucciones;
+        EspacioInstrucciones2 = espacioInstrucciones2;
+        EspacioInstrucciones3 = espacioInstrucciones3;
+        EspacioInstrucciones4 = espacioInstrucciones4;
+        EspacioInstrucciones5 = espacioInstrucciones5;
     }
 
     public JLabel getLblId() {
@@ -342,6 +354,14 @@ public class ventanaBase extends JFrame {
         this.panel3 = panel3;
     }
 
+    public JPanel getPanel4() {
+        return panel4;
+    }
+
+    public void setPanel4(JPanel panel4) {
+        this.panel4 = panel4;
+    }
+
     public JLabel getActualizarDATOS() {
         return ActualizarDATOS;
     }
@@ -350,12 +370,44 @@ public class ventanaBase extends JFrame {
         ActualizarDATOS = actualizarDATOS;
     }
 
-    public JLabel getEspacioEnBlanco() {
-        return EspacioEnBlanco;
+    public JLabel getEspacioInstrucciones() {
+        return EspacioInstrucciones;
     }
 
-    public void setEspacioEnBlanco(JLabel espacioEnBlanco) {
-        EspacioEnBlanco = espacioEnBlanco;
+    public void setEspacioInstrucciones(JLabel espacioInstrucciones) {
+        EspacioInstrucciones = espacioInstrucciones;
+    }
+
+    public JLabel getEspacioInstrucciones2() {
+        return EspacioInstrucciones2;
+    }
+
+    public void setEspacioInstrucciones2(JLabel espacioInstrucciones2) {
+        EspacioInstrucciones2 = espacioInstrucciones2;
+    }
+
+    public JLabel getEspacioInstrucciones3() {
+        return EspacioInstrucciones3;
+    }
+
+    public void setEspacioInstrucciones3(JLabel espacioInstrucciones3) {
+        EspacioInstrucciones3 = espacioInstrucciones3;
+    }
+
+    public JLabel getEspacioInstrucciones4() {
+        return EspacioInstrucciones4;
+    }
+
+    public void setEspacioInstrucciones4(JLabel espacioInstrucciones4) {
+        EspacioInstrucciones4 = espacioInstrucciones4;
+    }
+
+    public JLabel getEspacioInstrucciones5() {
+        return EspacioInstrucciones5;
+    }
+
+    public void setEspacioInstrucciones5(JLabel espacioInstrucciones5) {
+        EspacioInstrucciones5 = espacioInstrucciones5;
     }
 
     @Override
@@ -386,8 +438,13 @@ public class ventanaBase extends JFrame {
                 ", panel1=" + panel1 +
                 ", panel2=" + panel2 +
                 ", panel3=" + panel3 +
+                ", panel4=" + panel4 +
                 ", ActualizarDATOS=" + ActualizarDATOS +
-                ", EspacioEnBlanco=" + EspacioEnBlanco +
+                ", EspacioInstrucciones=" + EspacioInstrucciones +
+                ", EspacioInstrucciones2=" + EspacioInstrucciones2 +
+                ", EspacioInstrucciones3=" + EspacioInstrucciones3 +
+                ", EspacioInstrucciones4=" + EspacioInstrucciones4 +
+                ", EspacioInstrucciones5=" + EspacioInstrucciones5 +
                 '}';
     }
 
