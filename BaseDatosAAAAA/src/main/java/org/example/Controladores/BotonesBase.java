@@ -31,7 +31,7 @@ public class BotonesBase extends MouseAdapter {
         }
         if (e.getSource() == this.view.getBtnAgregar()) {
             Persona persona = new Persona();
-            Persona.setId(0);
+            persona.setId(0);
             persona.setNombre(this.view.getTxtNombre().getText());
             persona.setApellido(this.view.getTxtApellido().getText());
             if (modeloTablaPersona.agregarPersona(persona)) {
@@ -44,38 +44,35 @@ public class BotonesBase extends MouseAdapter {
         if (e.getSource() == this.view.getBtnEliminar()) {
             int selectedRow = this.view.getTblPersona().getSelectedRow();
             if (selectedRow != -1) {
-                int confirm = JOptionPane.showConfirmDialog(view, "¿Seguro que quieres eliminar este animal?", "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(view, "¿Seguro que quieres eliminar esta persona?", "Confirmar eliminacion", JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
                     modeloTablaPersona.eliminarPersona(selectedRow);
                     this.view.getTblPersona().updateUI();
                 }
             } else {
-                JOptionPane.showMessageDialog(view, "Selecciona un animal para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(view, "Selecciona una persona para eliminar", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
         if (e.getSource() == this.view.getBtnActualizar()) {
             System.out.println("Evento sobre botòn Actualizar");
-            System.out.println("Nombre a actualizar: " + this.view.getTxtNombre2().getText());
-            System.out.println("Apellido a actualizar: " + this.view.getTxtApellido2().getText());
-
-
             int rowIndex = this.view.getTblPersona().getSelectedRow();
             Persona tmp = modeloTablaPersona.getPersonaIndex(rowIndex);
-            Persona per = new Persona();
+            Persona persona = new Persona();
 
-            per.setNombre(this.view.getTxtNombre2().getText());
-            per.setApellido(this.view.getTxtApellido2().getText());
-            per.setId(tmp.getId());
-            System.out.println("Llamando al método ActualizarPersona con datos: " + per);
-
-            if (modeloTablaPersona.ActualizarPersona(per)) {
-                JOptionPane.showMessageDialog(view, "Se modificó correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            persona.setNombre(this.view.getTxtNombre2().getText());
+            persona.setApellido(this.view.getTxtApellido2().getText());
+            persona.setId(tmp.getId());
+            if (modeloTablaPersona.ActualizarPersona(persona)) {
+                JOptionPane.showMessageDialog(view, "Se modifico correctamente", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 modeloTablaPersona.cargarDatos();
-                this.view.getTblPersona().setModel(modeloTablaPersona); // Actualiza el modelo de la tabla
+                this.view.getTblPersona().setModel(modeloTablaPersona);
+                this.view.getTblPersona().updateUI();
             } else {
                 JOptionPane.showMessageDialog(view, "No se pudo modificar", "Error al Insertar", JOptionPane.ERROR_MESSAGE);
             }
+            this.view.getTblPersona().updateUI();
+        }
             if (e.getSource() == view.getTblPersona()) {
                 System.out.println("Evento sobre la tabla");
                 int index = this.view.getTblPersona().getSelectedRow();
@@ -85,7 +82,5 @@ public class BotonesBase extends MouseAdapter {
                 this.view.getTxtApellido2().setText(tem.getApellido());
             }
             this.view.limpiar();
-            ;
         }
     }
-}

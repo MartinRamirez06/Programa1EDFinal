@@ -18,8 +18,8 @@ public class Persona {
         return Id;
     }
 
-    public static void setId(int Id) {
-        Id = Id;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getNombre() {
