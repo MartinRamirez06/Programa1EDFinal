@@ -1,5 +1,6 @@
 package org.example.Controladores;
 
+import org.example.Vista.menu;
 import org.example.Vista.ventanaBase;
 import org.example.modelo.ModeloTablaPersona;
 import org.example.modelo.Persona;
@@ -12,18 +13,30 @@ public class BotonesBase extends MouseAdapter {
     private ventanaBase view;
     private ModeloTablaPersona modeloTablaPersona;
 
-    public BotonesBase(ventanaBase view) {
+    public BotonesBase(ventanaBase view, menu view2) {
         this.view = view;
+
         modeloTablaPersona = new ModeloTablaPersona();
         this.view.getTblPersona().addMouseListener(this);
         this.view.getBtnCargar().addMouseListener(this);
         this.view.getBtnAgregar().addMouseListener(this);
         this.view.getBtnEliminar().addMouseListener(this);
         this.view.getBtnActualizar().addMouseListener(this);
+        this.view.getBtnRegresar().addMouseListener(this);//sebas
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+//sebas
+        if(e.getSource()==this.view.getBtnRegresar()){
+            System.out.println("evento sobre boton inicio");
+            JComponent viewmenuOriginal = null;
+            viewmenuOriginal.setVisible(true); // muestra la ventana original
+            this.view.setVisible(false);
+            }
+
+
+        //---------------------------------lo de abajo es mio
         if (e.getSource() == this.view.getBtnCargar()) {
             modeloTablaPersona.cargarDatos();
             this.view.getTblPersona().setModel(modeloTablaPersona);

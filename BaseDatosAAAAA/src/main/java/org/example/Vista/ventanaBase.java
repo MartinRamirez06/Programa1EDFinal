@@ -46,7 +46,7 @@ public class ventanaBase extends JFrame {
 
         //panel1
         panel1=new JPanel(new GridLayout(19,1));
-        panel1.setBackground(new Color(239,200,200));
+        panel1.setBackground(new Color(22, 215, 190, 123));
         lblId=new JLabel("Id:");
         lblNombre=new JLabel("Nombre:");
         lblApellido=new JLabel("Apellido:");
@@ -83,21 +83,21 @@ public class ventanaBase extends JFrame {
         panel1.add(btnActualizar);
         //panel2
         panel2=new JPanel(new FlowLayout());
-        panel2.setBackground(new Color(255, 251, 200));
+        panel2.setBackground(new Color(255, 255, 255));
         TblPersona=new JTable();
         scrollPane=new JScrollPane();
         panel2.add(TblPersona);
         panel2.add(scrollPane);
         //panel3
-        panel3=new JPanel(new FlowLayout());
-        panel3.setBackground(new Color(255, 255, 255));
+        panel3=new JPanel(new GridLayout(1,2));
+        panel3.setBackground(new Color(248, 136, 136));
         btnCargar=new JButton("Cargar Tabla");
         btnRegresar=new JButton("Regresar");
         panel3.add(btnCargar);
         panel3.add(btnRegresar);
         //panel4
         panel4=new JPanel(new GridLayout(6,1));
-        panel4.setBackground(new Color(110,130,240));
+        panel4.setBackground(new Color(233, 236, 204));
         EspacioInstrucciones=new JLabel("Instrucciones");
         EspacioInstrucciones2=new JLabel("1.-Ingresa los datos que quieras agregar en la tabla");
         EspacioInstrucciones3=new JLabel("2.-Presiona el boton de cargar para ver la tabla");
@@ -114,7 +114,7 @@ public class ventanaBase extends JFrame {
         this.getContentPane().add(panel3,2);
         this.getContentPane().add(panel4,3);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setVisible(true);
+        this.setVisible(false);
     }
 
     public ventanaBase(String title, JLabel lblId, JLabel lblNombre, JLabel lblApellido, JLabel lblHora, JLabel lblfecha, JTextField txtId, JTextField txtNombre, JTextField txtApellido, JLabel lblId2, JLabel lblNombre2, JLabel lblApellido2, JTextField txtId2, JTextField txtNombre2, JTextField txtApellido2, JButton btnAgregar, JButton btnCargar, JButton btnEliminar, JButton btnActualizar, JButton btnRegresar, JScrollPane scrollPane, GridLayout layout, JTable tblPersona, JPanel panel1, JPanel panel2, JPanel panel3, JPanel panel4, JLabel actualizarDATOS, JLabel espacioInstrucciones, JLabel espacioInstrucciones2, JLabel espacioInstrucciones3, JLabel espacioInstrucciones4, JLabel espacioInstrucciones5) throws HeadlessException {
